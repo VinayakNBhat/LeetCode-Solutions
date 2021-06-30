@@ -26,12 +26,23 @@ public class Remove_Zero_Sum_Consecutive_Nodes_from_Linked_List {
           ListNode(int val, ListNode next) { this.val = val; this.next = next; }
       }
 
+    /**
+     * Definition for singly-linked list.
+     * public class ListNode {
+     *     int val;
+     *     ListNode next;
+     *     ListNode() {}
+     *     ListNode(int val) { this.val = val; }
+     *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+     * }
+     */
     class Solution {
         public ListNode removeZeroSumSublists(ListNode head) {
             int pSum = 0;
             Map<Integer, ListNode> map = new HashMap<>();
-            ListNode dummy = new ListNode();
+            ListNode dummy = new ListNode(0);
             dummy.next = head;
+            map.put(0, dummy);
             while(head != null) {
                 pSum += head.val;
                 if(map.containsKey(pSum)) {
