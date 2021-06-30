@@ -7,6 +7,9 @@ import java.util.Stack;
  *
  * Problem Description:
  * Given a string containing just the characters '(' and ')', find the length of the longest valid (well-formed) parentheses substring.
+ *
+ *  * O(N) -- Time complexity
+ *  * O(N) -- Space complexity
  */
 public class Longest_Valid_Parentheses {
     class Solution {
