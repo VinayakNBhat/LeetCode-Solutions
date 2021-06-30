@@ -4,6 +4,9 @@ import java.util.Stack;
 
 /**
  * https://leetcode.com/problems/longest-valid-parentheses/
+ *
+ * Problem Description:
+ * Given a string containing just the characters '(' and ')', find the length of the longest valid (well-formed) parentheses substring.
  */
 public class Longest_Valid_Parentheses {
     class Solution {
