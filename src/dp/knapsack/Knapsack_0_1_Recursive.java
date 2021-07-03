@@ -1,4 +1,4 @@
-package dp;
+package dp.knapsack;
 
 public class Knapsack_0_1_Recursive {
     public static void main(String[] args) {

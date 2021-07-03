@@ -1,4 +1,4 @@
-package dp;
+package dp.knapsack;
 
 public class Knapsack_0_1_Memorization {
     public static void main(String[] args) {
