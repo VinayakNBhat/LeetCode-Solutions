@@ -1,4 +1,7 @@
 # LeetCode
-Solutions for LeetCode problems
+Solutions for LeetCode problems.
 
-The src contains the problems and solutions categorized as per the difficulty. 
+Each solution contains the problem description and link for the problem in the header.
+The solution provided are optimized and various other approaches are discussed as well.
+
+The src package contains LC solutions categorized as per the difficulty. 
