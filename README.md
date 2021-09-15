@@ -1,4 +1,4 @@
-# LeetCode
+# LeetCode Solutions
 Solutions for LeetCode problems.
 
 Each solution contains the problem description and link for the problem in the header.
