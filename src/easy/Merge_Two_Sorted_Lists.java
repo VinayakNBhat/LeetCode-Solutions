@@ -21,43 +21,45 @@ public class Merge_Two_Sorted_Lists {
 
     class Solution {
         public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-            ListNode tmp = null;
-            ListNode ret = null;
-            while(l1 != null && l2 != null) {
-                if(tmp == null) {
-                    if(l1.val <= l2.val) {
-                        tmp = l1;
-                        l1 = l1.next;
-                    } else {
-                        tmp = l2;
-                        l2 = l2.next;
-                    }
-                    ret = tmp;
-                    continue;
-                }
+            ListNode prev = null;
+            ListNode p1 = l1;
+            ListNode p2 = l2;
+            ListNode newHead = null;
 
-                if(l1.val <= l2.val) {
-                    tmp.next = l1;
-                    l1 = l1.next;
+            if (l1 == null) return l2;
+            if (l2 == null) return l1;
+
+            if(l1.val <= l2.val) {
+                prev = l1;
+                p1 = p1.next;
+                newHead = l1;
+            } else {
+                prev = l2;
+                p2 = p2.next;
+                newHead = l2;
+            }
+
+            while(p1 != null && p2 != null) {
+                if (p1.val <= p2.val) {
+                    prev.next = p1;
+                    prev = prev.next;
+                    p1 = p1.next;
                 } else {
-                    tmp.next = l2;
-                    l2 = l2.next;
+                    prev.next = p2;
+                    prev = prev.next;
+                    p2 = p2.next;
                 }
-
-                tmp = tmp.next;
             }
 
-            if(l1 == null && l2 != null) {
-                if(tmp == null) return l2;
-                tmp.next = l2;
+            if (p1 == null) {
+                prev.next = p2;
             }
 
-            if(l1 != null && l2 == null) {
-                if(tmp == null) return l1;
-                tmp.next = l1;
+            if (p2 == null) {
+                prev.next = p1;
             }
 
-            return ret;
+            return newHead;
         }
     }
 }
