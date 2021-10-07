@@ -20,31 +20,20 @@ public class Jump_Game_II {
      */
     class Solution {
         public int jump(int[] nums) {
-            int n = nums.length - 1;
-            int[] dp = new int[n + 1];
+            int jumps = 0;
+            int currentFarthest = 0;
+            int currentEnd = 0;
 
-            for(int i = n-1; i >= 0; i--) {
-
-                if(nums[i] == 0) {
-                    dp[i] = 10005;
-                    continue;
+            for (int i = 0; i < nums.length - 1; i++) {
+                currentFarthest = Math.max(currentFarthest, i + nums[i]);
+                if (i == currentEnd) {
+                    jumps++;
+                    currentEnd = currentFarthest;
                 }
 
-                if (nums[i] >= (n - i)) {
-                    dp[i] = 1;
-                } else {
-                    int j = i + 1;
-                    int min = 10005;
-                    while(j <= n && j <= i + nums[i]) {
-                        min = Math.min(min, dp[j]);
-                        if (dp[j] == 1) break;
-                        j++;
-                    }
-                    dp[i] = min + 1;
-                }
             }
 
-            return dp[0];
+            return jumps;
         }
     }
 }
