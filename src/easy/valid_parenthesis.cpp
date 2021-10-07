@@ -1,3 +1,7 @@
+//https://leetcode.com/problems/valid-parentheses
+
+// using STL Stacks
+
 class Solution {
 public:
     bool isValid(string s) {
