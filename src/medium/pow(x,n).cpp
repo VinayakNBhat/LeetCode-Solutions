@@ -1,24 +1,24 @@
 //https://leetcode.com/problems/powx-n
 
+//squared exponentiation
+
+//TC : O(lg n)
+//SC: O(1)
+
 class Solution {
 public:
-    double myPow(double x, long n) {
-        if(x==1 || n==0)  return 1;
+    double myPow(double x, int n) {
+        if(x==1.000 || n==0)  
+            return 1;
         
-          if(n>0)
-          {
-              if(n%2==1)
-                  return x*myPow(x*x, (n-1)/2);
-              else
-                  return myPow(x*x, n/2);
-          }
-          else
-          {
-           
-            if((-1*n)%2==1)
-                  return (1/x)*myPow(x, n+1);
-              else
-                  return myPow(1/(x*x), -1*n/2);
-          }
+        int y = abs(n);
+        double z;
+        
+        if(y%2==1)
+            z = x*myPow(x*x, (y-1)/2);
+        else
+            z = myPow(x*x, y/2);
+        
+        return n>0 ? z : 1/z;
     }
 };
