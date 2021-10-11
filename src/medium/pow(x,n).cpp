@@ -3,7 +3,7 @@
 //squared exponentiation
 
 //TC : O(lg n)
-//SC: O(1)
+//SC: O(lg n) for recursion stack
 
 class Solution {
 public:
