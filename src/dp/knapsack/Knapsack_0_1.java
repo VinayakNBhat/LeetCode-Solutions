@@ -1,5 +1,7 @@
 package dp.knapsack;
 
+import java.util.Arrays;
+
 public class Knapsack_0_1 {
     public static void main(String[] args) {
         int[] wt = {1,3,4,5}; //{10,20,30};
@@ -8,13 +10,7 @@ public class Knapsack_0_1 {
 
         int n = wt.length;
 
-        int max = 0;
-
-        for (int i = 0; i < n; i++) {
-            if(wt[i] <= W) {
-                max = Math.max(max, wt[i]);
-            }
-        }
+        int max = Arrays.stream(wt).max().getAsInt();
 
         for(int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {

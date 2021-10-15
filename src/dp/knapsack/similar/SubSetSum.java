@@ -1,9 +1,7 @@
 package dp.knapsack.similar;
 
-import java.lang.annotation.Target;
-
 /**
- * Given a set of non negative numbers and a total, find if there exists a  subset in this set whose sum is same as total.
+ * Given a set of non negative numbers and a total, find if there exists a subset in this set whose sum is same as total.
  *
  * In this program we find if there is a subset that sums to the given target.
  */
