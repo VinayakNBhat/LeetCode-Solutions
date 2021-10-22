@@ -1,6 +1,6 @@
 //https://leetcode.com/problems/merge-intervals
 
-//TC: O(N)
+//TC: O(N log N)
 
 class Solution {
 public:
