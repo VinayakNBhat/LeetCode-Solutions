@@ -1,5 +1,7 @@
 //https://leetcode.com/problems/merge-intervals
 
+//TC: O(N)
+
 class Solution {
 public:
     vector<vector<int>> merge(vector<vector<int>>& v) {
