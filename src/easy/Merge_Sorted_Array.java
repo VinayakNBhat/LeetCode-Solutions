@@ -11,7 +11,7 @@ import java.util.Arrays;
  *
  * The final sorted array should not be returned by the function, but instead be stored inside the array nums1. To accommodate this, nums1 has a length of m + n, where the first m elements denote the elements that should be merged, and the last n elements are set to 0 and should be ignored. nums2 has a length of n.\
  *
- * TC: O(n^2)
+ * TC: O((m+n)log(m+n))
  * SC: O(1)
  *
  */
