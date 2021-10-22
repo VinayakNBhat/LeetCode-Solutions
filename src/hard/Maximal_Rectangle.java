@@ -9,61 +9,52 @@ import java.util.Stack;
  */
 public class Maximal_Rectangle {
     class Solution {
-        int maxArea = 0;
         public int maximalRectangle(char[][] mat) {
-            int m = mat.length;
-            if(m == 0) return 0;
-
-            int n = mat[0].length;
-
-            if(n==0) return 0;
-
-            int[] prev = new int[n];
-            for(int i = 0; i < n; i++) {
-                prev[i] = mat[0][i] == '0' ? 0 : 1;
+            if (mat.length == 0) return 0;
+            int[] arr = new int[mat[0].length];
+            int max = 0;
+            for(int i = 0; i < mat.length; i++) {
+                alterArray(mat, arr, i);
+                max = Math.max(max, maxAreaInHistogram(arr));
             }
-
-            maxArea = getMaxArea(prev);
-
-            for(int i = 1; i < m; i++) {
-                for(int j = 0; j < n; j++) {
-                    if(mat[i][j] == '0') {
-                        prev[j] = 0;
-                    } else{
-                        prev[j] = prev[j] + 1;
-                    }
-                }
-                maxArea = Math.max(maxArea, getMaxArea(prev));
-            }
-
-            return maxArea;
+            return max;
         }
 
-        int getMaxArea(int[] nums) {
-            int i = 0;
-            int area = 0;
-            Stack<Integer> st = new Stack<>();
-
-            while(i < nums.length) {
-                if(st.isEmpty() || nums[i] >= nums[st.peek()]) {
-                    st.push(i++);
+        void alterArray(char[][] mat, int[] arr, int row) {
+            for(int j = 0; j < arr.length; j++) {
+                if (mat[row][j] == '1') {
+                    arr[j]++;
                 } else {
-                    int top = st.pop();
-                    if(st.isEmpty()) {
-                        area = Math.max(area, nums[top] * i);
-                    } else {
-                        area = Math.max(area, nums[top] * (i - 1 - st.peek()));
-                    }
+                    arr[j] = 0;
                 }
             }
+        }
 
-            while(!st.isEmpty()) {
-                int top = st.pop();
-                if(st.isEmpty()) {
-                    area = Math.max(area, nums[top] * i);
+        int maxAreaInHistogram(int[] arr) {
+            int n = arr.length;
+            Stack<Integer> st = new Stack<>();
+            int area = 0;
+            int i = 0;
+            while(i < n) {
+                if (st.empty() || arr[i] >= arr[st.peek()]) {
+                    st.push(i++);
                 } else {
-                    area = Math.max(area, nums[top] * (i - 1 - st.peek()));
+                    area = maxArea(arr, st, area, i);
                 }
+            }
+            while(!st.empty()) {
+                area = maxArea(arr, st, area, i);
+            }
+
+            return area;
+        }
+
+        int maxArea(int[] arr, Stack<Integer> st, int area, int i) {
+            int top = st.pop();
+            if (st.empty()) {
+                area = Math.max(area, arr[top] * i);
+            } else {
+                area = Math.max(area, arr[top] * (i - st.peek() - 1));
             }
 
             return area;
