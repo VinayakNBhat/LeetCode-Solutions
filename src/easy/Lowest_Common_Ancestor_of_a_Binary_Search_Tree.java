@@ -17,22 +17,18 @@ public class Lowest_Common_Ancestor_of_a_Binary_Search_Tree {
     class Solution {
         public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
             if (root == null) return null;
+            if (root == p || root == q) return root;
 
-            if (rootIsSmaller(root.val, p.val, q.val)) {
-                return lowestCommonAncestor(root.right, p, q);
-            } else if (rootIsLarger(root.val, p.val, q.val)) {
+            if (p.val <= root.val && q.val <= root.val) {
+                // On the left side of the root
                 return lowestCommonAncestor(root.left, p, q);
+            } else if (p.val >= root.val && q.val >= root.val) {
+                // On the right side of the root
+                return lowestCommonAncestor(root.right, p, q);
             } else {
                 return root;
             }
-        }
 
-        boolean rootIsSmaller(int val, int p, int q) {
-            return val < p && val < q;
-        }
-
-        boolean rootIsLarger(int val, int p, int q) {
-            return val > p && val > q;
         }
     }
 }

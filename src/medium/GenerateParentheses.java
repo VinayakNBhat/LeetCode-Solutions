@@ -24,4 +24,32 @@ public class GenerateParentheses {
             if(unBalanced > 0) generateParenthesis(n, unBalanced-1, comb + ")", list);
         }
     }
+
+    class Solutions2 {
+        public List<String> generateParenthesis(int n) {
+            StringBuilder sb = new StringBuilder();
+            List<String> ret = new ArrayList<>();
+            generateParenthesis(n, ret, sb, 0, 0);
+            return ret;
+        }
+
+        void generateParenthesis(int n, List<String> ret, StringBuilder sb, int open , int closed) {
+            if (open >= n && closed >= n) {
+                ret.add(sb.toString());
+                return;
+            }
+            if(open < n) {
+                sb.append("(");
+                generateParenthesis(n, ret, sb, open + 1, closed);
+                sb.deleteCharAt(sb.length() - 1);
+            }
+
+            if (closed < open) {
+                sb.append(")");
+                generateParenthesis(n, ret, sb, open, closed + 1);
+                sb.deleteCharAt(sb.length() - 1);
+            }
+        }
+    }
 }
+
